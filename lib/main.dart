@@ -1,3 +1,4 @@
+import 'package:doctorkey/views/init_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Doctor Key',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.green, primary: Colors.green),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -45,18 +47,7 @@ class MyHomePage extends StatelessWidget {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      body: const Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Bem-vindo ao Doctor Key!",
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-            ]),
-      ),
-    );
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        body: InitScreen(key: key));
   }
 }
