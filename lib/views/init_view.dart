@@ -42,6 +42,12 @@ class _LoginScreenState extends State<InitScreen> {
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Insira seu nome de usuário!';
+                              }
+                              return null;
+                            },
                             style: const TextStyle(color: Colors.white),
                             cursorColor: Colors.white,
                             decoration: const InputDecoration(
@@ -64,6 +70,15 @@ class _LoginScreenState extends State<InitScreen> {
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Insira sua senha!';
+                              }
+                              if (value.length < 8) {
+                                return 'Sua senha deve ser maior ou igual a 8 digitos';
+                              }
+                              return null;
+                            },
                             obscureText: true,
                             style: const TextStyle(color: Colors.white),
                             cursorColor: Colors.white,
@@ -87,7 +102,13 @@ class _LoginScreenState extends State<InitScreen> {
                         Container(
                           margin: const EdgeInsets.all(10),
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text("Analisando!")));
+                                }
+                              },
                               style: TextButton.styleFrom(
                                 foregroundColor: Colors.green,
                                 backgroundColor: Colors.white,

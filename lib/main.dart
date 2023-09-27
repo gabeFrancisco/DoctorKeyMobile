@@ -1,4 +1,3 @@
-import 'package:doctorkey/services/login_service.dart';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:flutter/material.dart';
 
@@ -30,9 +29,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Login.getLogin('gabeFrank', '77777777')
-        .then((value) => print(value.body))
-        .onError((error, stackTrace) => print(error));
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         body: InitScreen(key: key));
