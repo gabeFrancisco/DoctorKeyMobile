@@ -1,3 +1,4 @@
+import 'package:doctorkey/services/login_service.dart';
 import 'package:flutter/material.dart';
 
 class InitScreen extends StatefulWidget {
@@ -9,6 +10,8 @@ class InitScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<InitScreen> {
   final _formKey = GlobalKey<FormState>();
+  var usernameCotnroller = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class _LoginScreenState extends State<InitScreen> {
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
+                            controller: usernameCotnroller,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Insira seu nome de usuário!';
@@ -50,26 +54,36 @@ class _LoginScreenState extends State<InitScreen> {
                             },
                             style: const TextStyle(color: Colors.white),
                             cursorColor: Colors.white,
-                            decoration: const InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
+                            decoration: InputDecoration(
+                                errorStyle:
+                                    TextStyle(color: Colors.red.shade300),
+                                errorBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.red.shade300)),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.red.shade300)),
+                                focusedBorder: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                border: UnderlineInputBorder(
+                                border: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                icon: Icon(Icons.person,
+                                icon: const Icon(Icons.person,
                                     color: Colors.white, size: 38),
                                 focusColor: Colors.white,
                                 labelText: "Usuário",
-                                labelStyle: TextStyle(color: Colors.white)),
+                                labelStyle:
+                                    const TextStyle(color: Colors.white)),
                           ),
                         ),
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
+                            controller: passwordController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Insira sua senha!';
@@ -82,21 +96,30 @@ class _LoginScreenState extends State<InitScreen> {
                             obscureText: true,
                             style: const TextStyle(color: Colors.white),
                             cursorColor: Colors.white,
-                            decoration: const InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
+                            decoration: InputDecoration(
+                                errorStyle:
+                                    TextStyle(color: Colors.red.shade300),
+                                errorBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.red.shade300)),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.red.shade300)),
+                                focusedBorder: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                enabledBorder: UnderlineInputBorder(
+                                enabledBorder: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                border: UnderlineInputBorder(
+                                border: const UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.white)),
-                                icon: Icon(Icons.key,
+                                icon: const Icon(Icons.key,
                                     color: Colors.white, size: 38),
                                 focusColor: Colors.white,
                                 labelText: "Senha",
-                                labelStyle: TextStyle(color: Colors.white)),
+                                labelStyle:
+                                    const TextStyle(color: Colors.white)),
                           ),
                         ),
                         Container(
@@ -108,6 +131,9 @@ class _LoginScreenState extends State<InitScreen> {
                                       const SnackBar(
                                           content: Text("Analisando!")));
                                 }
+
+                                LoginService.getLogin(usernameCotnroller.text,
+                                    passwordController.text);
                               },
                               style: TextButton.styleFrom(
                                 foregroundColor: Colors.green,
