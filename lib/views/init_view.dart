@@ -28,7 +28,7 @@ class _LoginScreenState extends State<InitScreen> {
                 Container(
                   margin: const EdgeInsets.all(30),
                   child: const Text(
-                    "Bem-vindo ao Doctor Key!",
+                    "Bem-vindo!",
                     style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
