@@ -1,5 +1,6 @@
 import 'package:doctorkey/services/login_service.dart';
 import 'package:flutter/material.dart';
+import '../widgets/helpers/textField_decoration.dart';
 
 class InitScreen extends StatefulWidget {
   const InitScreen({super.key});
@@ -45,82 +46,34 @@ class _LoginScreenState extends State<InitScreen> {
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
-                            controller: usernameCotnroller,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Insira seu nome de usuário!';
-                              }
-                              return null;
-                            },
-                            style: const TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
-                            decoration: InputDecoration(
-                                errorStyle:
-                                    TextStyle(color: Colors.red.shade300),
-                                errorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade300)),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade300)),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                enabledBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                border: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                icon: const Icon(Icons.person,
-                                    color: Colors.white, size: 38),
-                                focusColor: Colors.white,
-                                labelText: "Usuário",
-                                labelStyle:
-                                    const TextStyle(color: Colors.white)),
-                          ),
+                              controller: usernameCotnroller,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Insira seu nome de usuário!';
+                                }
+                                return null;
+                              },
+                              style: const TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
+                              decoration: setTextFieldDecoration()),
                         ),
                         Container(
                           padding: const EdgeInsets.all(30),
                           child: TextFormField(
-                            controller: passwordController,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Insira sua senha!';
-                              }
-                              if (value.length < 8) {
-                                return 'Sua senha deve ser maior ou igual a 8 digitos';
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            style: const TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
-                            decoration: InputDecoration(
-                                errorStyle:
-                                    TextStyle(color: Colors.red.shade300),
-                                errorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade300)),
-                                focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade300)),
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                enabledBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                border: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                icon: const Icon(Icons.key,
-                                    color: Colors.white, size: 38),
-                                focusColor: Colors.white,
-                                labelText: "Senha",
-                                labelStyle:
-                                    const TextStyle(color: Colors.white)),
-                          ),
+                              controller: passwordController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Insira sua senha!';
+                                }
+                                if (value.length < 8) {
+                                  return 'Sua senha deve ser maior ou igual a 8 digitos';
+                                }
+                                return null;
+                              },
+                              obscureText: true,
+                              style: const TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
+                              decoration: setTextFieldDecoration()),
                         ),
                         Container(
                           margin: const EdgeInsets.all(10),
