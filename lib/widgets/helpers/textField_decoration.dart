@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-@override
-InputDecoration setTextFieldDecoration() {
+InputDecoration setTextFieldDecoration(String label, Icon icon) {
   return InputDecoration(
       errorStyle: TextStyle(color: Colors.red.shade300),
       errorBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red.shade300)),
       focusedErrorBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red.shade300)),
-      focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)),
-      enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)),
+      focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.green.shade300)),
+      enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.green.shade300)),
       border: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white)),
-      icon: const Icon(Icons.key, color: Colors.white, size: 38),
-      focusColor: Colors.white,
-      labelText: "Senha",
-      labelStyle: const TextStyle(color: Colors.white));
+      icon: icon,
+      focusColor: Colors.green.shade300,
+      labelText: label,
+      labelStyle: TextStyle(color: Colors.green.shade300));
 }
