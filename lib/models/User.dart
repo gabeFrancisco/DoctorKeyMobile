@@ -5,7 +5,6 @@ class User extends BaseEntity {
   String name;
   String email;
 
-  @override
   User(
       {required this.name,
       required this.username,
