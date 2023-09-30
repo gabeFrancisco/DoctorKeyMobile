@@ -13,10 +13,10 @@ class KeyCard extends StatelessWidget {
       onTap: () => print("God bless you!"),
       borderRadius: BorderRadius.circular(10),
       child: Card(
-        elevation: 4,
+        elevation: 3,
         surfaceTintColor: Colors.grey.shade300,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
+            borderRadius: BorderRadius.all(Radius.circular(25))),
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Container(
           padding: const EdgeInsets.all(15),
@@ -28,9 +28,39 @@ class KeyCard extends StatelessWidget {
                 children: [
                   Text(
                     model.model,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: Colors.grey.shade700,
+                    ),
                   ),
-                  Text(model.year)
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 5),
+                        child: Text(
+                          model.year,
+                          style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          model.keyType,
+                          style: TextStyle(color: Colors.grey.shade600),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          model.bladeType,
+                          style: TextStyle(color: Colors.grey.shade600),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
               Container(

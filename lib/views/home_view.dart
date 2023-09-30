@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:doctorkey/views/init_view.dart';
+import 'package:doctorkey/views/new_key_screen.dart';
 import 'package:doctorkey/widgets/key_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -54,5 +55,18 @@ Widget buildScaffold(
       backgroundColor: Colors.green.shade300,
     ),
     body: const Center(child: KeyList()),
+    floatingActionButton: Container(
+      margin: const EdgeInsets.all(15),
+      child: FloatingActionButton(
+          onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NewKeyScreen()))
+              },
+          backgroundColor: Colors.green.shade300,
+          elevation: 5,
+          child: const Icon(Icons.add, color: Colors.white)),
+    ),
   );
 }
