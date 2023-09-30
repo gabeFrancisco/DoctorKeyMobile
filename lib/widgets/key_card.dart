@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../models/Key.dart';
+
 class KeyCard extends StatelessWidget {
-  const KeyCard({super.key});
+  final KeyModel model;
+  const KeyCard({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      margin: EdgeInsets.all(7),
+    return Card(
+      margin: const EdgeInsets.all(7),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("Key!")],
+        children: [Text(model.model)],
       ),
     );
   }

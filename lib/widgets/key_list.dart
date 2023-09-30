@@ -29,9 +29,7 @@ class _KeyListState extends State<KeyList> {
 }
 
 Widget buildList(BuildContext context, List<KeyModel> keys) {
-  return ListView.builder(
-      itemCount: keys.length,
-      itemBuilder: (BuildContext context, int index) {
-        return KeyCard();
-      });
+  return SingleChildScrollView(
+    child: Column(children: keys.map((e) => KeyCard(model: e)).toList()),
+  );
 }
