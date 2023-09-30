@@ -1,5 +1,7 @@
 import 'package:doctorkey/services/login_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart';
 import '../widgets/helpers/textField_decoration.dart';
 
 class InitScreen extends StatefulWidget {
@@ -24,11 +26,11 @@ class _LoginScreenState extends State<InitScreen> {
             children: [
               Container(
                 margin: const EdgeInsets.all(30),
-                child: const Text(
-                  "Bem-vindo!",
+                child: Text(
+                  "Bem-vindo ao Doctor Key!",
                   style: TextStyle(
                       fontSize: 24,
-                      color: Colors.green,
+                      color: Colors.green.shade300,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -46,8 +48,12 @@ class _LoginScreenState extends State<InitScreen> {
                               }
                               return null;
                             },
-                            style: const TextStyle(color: Colors.green),
-                            cursorColor: Colors.green,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.deny(
+                                  RegExp(r"\s\b|\b\s"))
+                            ],
+                            style: TextStyle(color: Colors.green.shade300),
+                            cursorColor: Colors.green.shade300,
                             decoration: setTextFieldDecoration(
                                 "Usuário",
                                 Icon(Icons.person,
@@ -67,13 +73,15 @@ class _LoginScreenState extends State<InitScreen> {
                               return null;
                             },
                             obscureText: true,
-                            style: const TextStyle(color: Colors.white),
-                            cursorColor: Colors.white,
+                            style: TextStyle(color: Colors.green.shade300),
+                            cursorColor: Colors.green.shade300,
                             decoration: setTextFieldDecoration(
                                 "Senha",
                                 Icon(Icons.key,
                                     color: Colors.green.shade300, size: 38))),
                       ),
+
+                      //Login button
                       Container(
                         margin: const EdgeInsets.all(10),
                         child: TextButton(
@@ -82,14 +90,35 @@ class _LoginScreenState extends State<InitScreen> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text("Analisando!")));
+                                LoginService.getLogin(usernameCotnroller.text,
+                                        passwordController.text)
+                                    .then((value) => {
+                                          if (value.statusCode == 500)
+                                            {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return dialog(context,
+                                                        "Usuário ou senha incorretos!");
+                                                  }),
+                                            }
+                                          else
+                                            {
+                                              showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return dialog(context,
+                                                        "Usuário logado!");
+                                                  }),
+                                            }
+                                        });
                               }
-
-                              LoginService.getLogin(usernameCotnroller.text,
-                                  passwordController.text);
                             },
                             style: TextButton.styleFrom(
-                              foregroundColor: Colors.green,
-                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.green.shade300,
                               minimumSize: const Size(150, 48),
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 16),
@@ -99,31 +128,33 @@ class _LoginScreenState extends State<InitScreen> {
                               style: TextStyle(fontSize: 20),
                             )),
                       ),
+
                       Container(
                         margin: const EdgeInsets.all(10),
                         child: TextButton(
                             onPressed: () {},
-                            child: const Text(
+                            child: Text(
                               "Esqueci minha senha",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.green.shade300),
                             )),
                       ),
+
                       Container(
                         margin: const EdgeInsets.all(10),
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Não é um usuário? ",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.green.shade300),
                               ),
                               TextButton(
                                   onPressed: () {},
-                                  child: const Text(
+                                  child: Text(
                                     "Cadastre-se aqui!",
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      decorationColor: Colors.white,
+                                      color: Colors.green.shade300,
+                                      decorationColor: Colors.green.shade300,
                                       decoration: TextDecoration.underline,
                                     ),
                                   )),
@@ -135,4 +166,29 @@ class _LoginScreenState extends State<InitScreen> {
       ),
     );
   }
+}
+
+AlertDialog dialog(BuildContext context, String message) {
+  return AlertDialog(
+    backgroundColor: Colors.white,
+    content: Container(
+      margin: const EdgeInsets.all(15),
+      child: Text(message),
+    ),
+    actions: [
+      TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.red.shade300,
+            minimumSize: const Size(150, 48),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text(
+            "Ok",
+          )),
+    ],
+  );
 }

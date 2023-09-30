@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 InputDecoration setTextFieldDecoration(String label, Icon icon) {
   return InputDecoration(
-      errorStyle: TextStyle(color: Colors.red.shade300),
+      errorStyle: TextStyle(color: Colors.red.shade200),
       errorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade300)),
+          borderSide: BorderSide(color: Colors.red.shade200)),
       focusedErrorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade300)),
+          borderSide: BorderSide(color: Colors.red.shade200)),
       focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green.shade300)),
       enabledBorder: UnderlineInputBorder(
