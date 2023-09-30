@@ -93,26 +93,26 @@ class _LoginScreenState extends State<InitScreen> {
                                 LoginService.getLogin(usernameCotnroller.text,
                                         passwordController.text)
                                     .then((value) => {
-                                          if (value.statusCode == 500)
-                                            {
-                                              showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return dialog(context,
-                                                        "Usuário ou senha incorretos!");
-                                                  }),
-                                            }
-                                          else
-                                            {
-                                              showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (BuildContext context) {
-                                                    return dialog(context,
-                                                        "Usuário logado!");
-                                                  }),
-                                            }
+                                          // if (value.statusCode == 500)
+                                          //   {
+                                          //     showDialog(
+                                          //         context: context,
+                                          //         builder:
+                                          //             (BuildContext context) {
+                                          //           return dialog(context,
+                                          //               "Usuário ou senha incorretos!");
+                                          //         }),
+                                          //   }
+                                          // else
+                                          //   {
+                                          //     showDialog(
+                                          //         context: context,
+                                          //         builder:
+                                          //             (BuildContext context) {
+                                          //           return dialog(context,
+                                          //               "Usuário logado!");
+                                          //         }),
+                                          //   }
                                         });
                               }
                             },
