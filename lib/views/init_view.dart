@@ -90,8 +90,10 @@ class _LoginScreenState extends State<InitScreen> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                         content: Text("Analisando!")));
-                                LoginService.getLogin(usernameCotnroller.text,
-                                        passwordController.text)
+                                var login = LoginService.getLogin(
+                                        usernameCotnroller.text,
+                                        passwordController.text,
+                                        context)
                                     .then((value) => {
                                           // if (value.statusCode == 500)
                                           //   {

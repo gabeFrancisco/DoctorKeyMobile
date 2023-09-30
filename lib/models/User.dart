@@ -11,7 +11,8 @@ class User extends BaseEntity {
       required this.username,
       required this.email,
       required super.id,
-      required super.createdAt, super.updatedAt});
+      required super.createdAt,
+      super.updatedAt});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -24,11 +25,11 @@ class User extends BaseEntity {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'username': username,
-    'name': name,
-    'email': email,
-    'createdAt': createdAt,
-    'updateAt': updatedAt
-  }
+        'id': id,
+        'username': username,
+        'name': name,
+        'email': email,
+        'createdAt': createdAt,
+        'updateAt': updatedAt
+      };
 }
