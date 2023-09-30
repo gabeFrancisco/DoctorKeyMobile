@@ -29,7 +29,7 @@ class _KeyListState extends State<KeyList> {
 }
 
 Widget buildList(BuildContext context, List<KeyModel> keys) {
-  return SingleChildScrollView(
-    child: Column(children: keys.map((e) => KeyCard(model: e)).toList()),
+  return ListView(
+    children: keys.map((e) => KeyCard(model: e)).toList(),
   );
 }
