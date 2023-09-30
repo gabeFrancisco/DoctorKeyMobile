@@ -1,7 +1,6 @@
 import 'package:doctorkey/models/BaseEntity.dart';
-import 'package:doctorkey/models/User.dart';
 
-class Key extends BaseEntity {
+class KeyModel extends BaseEntity {
   String manufactor;
   String model;
   String keyType;
@@ -13,7 +12,7 @@ class Key extends BaseEntity {
   String observation;
   String userId;
 
-  Key({
+  KeyModel({
     required this.manufactor,
     required this.model,
     required this.keyType,
@@ -29,21 +28,21 @@ class Key extends BaseEntity {
     required super.updatedAt,
   });
 
-  factory Key.fromMap(Map<String, dynamic> json) {
-    return Key(
+  factory KeyModel.fromJson(Map<String, dynamic> json) {
+    return KeyModel(
         id: json['id'],
         manufactor: json['manufactor'],
         model: json['model'],
-        keyType: json['keytype'],
-        bladeType: json['bladetype'],
-        serviceType: json['servicetype'],
+        keyType: json['keyType'],
+        bladeType: json['bladeType'],
+        serviceType: json['serviceType'],
         year: json['year'],
-        buttons: json['buttons'],
-        price: json['price'],
+        buttons: json['buttons'].toString(),
+        price: json['price'].toString(),
         observation: json['observation'],
-        userId: json['userid'],
-        createdAt: json['createdat'],
-        updatedAt: json['updatedat']);
+        userId: json['userId'],
+        createdAt: '',
+        updatedAt: '');
   }
 
   Map<String, dynamic> toJson() => {

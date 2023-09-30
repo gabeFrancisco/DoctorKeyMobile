@@ -22,9 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return FutureBuilder(
         future: storage.read(key: 'user'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          {
+          if (snapshot.hasData) {
             User user = User.fromJson(json.decode(snapshot.data));
             return buildScaffold(context, user, storage);
+          } else {
+            return const Center();
           }
         });
   }
