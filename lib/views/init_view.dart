@@ -20,9 +20,9 @@ class _LoginScreenState extends State<InitScreen> {
     return FutureBuilder(
         future: storage.read(key: 'user_token'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          print(snapshot.data);
+          // print(snapshot.data);
           if (snapshot.data == null) {
-            return getScaffold((context));
+            return buildScaffold((context));
           } else {
             return const HomeScreen();
           }
@@ -30,8 +30,8 @@ class _LoginScreenState extends State<InitScreen> {
   }
 }
 
-Widget getScaffold(BuildContext context) {
-  final _formKey = GlobalKey<FormState>();
+Widget buildScaffold(BuildContext context) {
+  final formKey = GlobalKey<FormState>();
 
   var usernameCotnroller = TextEditingController();
   var passwordController = TextEditingController();
@@ -51,7 +51,7 @@ Widget getScaffold(BuildContext context) {
             ),
           ),
           Form(
-              key: _formKey,
+              key: formKey,
               child: Column(
                 children: [
                   Container(
@@ -101,7 +101,7 @@ Widget getScaffold(BuildContext context) {
                     margin: const EdgeInsets.all(10),
                     child: TextButton(
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text("Analisando!")));
                             LoginService.getLogin(usernameCotnroller.text,
