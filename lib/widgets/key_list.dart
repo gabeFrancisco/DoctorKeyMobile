@@ -15,40 +15,33 @@ class KeyList extends StatefulWidget {
 
 class _KeyListState extends State<KeyList> {
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: KeyService.fetchAll(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
-                  strokeWidth: 5.0,
-                ),
-              );
-            case ConnectionState.none:
-              return const Center(
-                child: Text("Nenhuma chave cadastrada!"),
-              );
-            default:
-              if (snapshot.hasError) {
-                LoginService.clearLoginData(context);
-                return const Center(
-                  child: Text("Ocorreu um erro ao carregar os dados!"),
-                );
-              } else {
-                return buildList(context, snapshot.data);
-              }
-          }
-        });
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<KeysRepository>(context, listen: false).getAll();
+    });
   }
-}
 
-Widget buildList(BuildContext context, List<KeyModel> keys) {
-  return Consumer<KeysRepository>(builder: (context, cart, child) {
-    return ListView(
-      children: keys.map((e) => KeyCard(model: e)).toList(),
-    );
-  });
+  @override
+  Widget build(BuildContext context) {
+    var keys = Provider.of<KeysRepository>(context);
+    return Consumer<KeysRepository>(builder: (context, cart, child) {
+      if (cart.isLoading) {
+        return Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+          ),
+        );
+      } else if (cart.list.isEmpty) {
+        return const Center(
+          child: Text("Nenhuma chave cadastrada!"),
+        );
+      } else {
+        return ListView(
+          children: keys.list.map((e) => KeyCard(model: e)).toList(),
+        );
+      }
+    });
+  }
 }
