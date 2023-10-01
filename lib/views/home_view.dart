@@ -16,18 +16,34 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: storage.read(key: 'user'),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            User user = User.fromJson(json.decode(snapshot.data));
-            return buildScaffold(context, user, storage);
-          } else {
-            return const Center();
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+                ),
+              );
+            case ConnectionState.none:
+              return const Center(
+                child: Text("Ocorreu um erro ao carregar os dados!"),
+              );
+            default:
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Ocorreu um erro ao carregar os dados!"),
+                );
+              } else {
+                User user = User.fromJson(json.decode(snapshot.data));
+                return buildScaffold(context, user, storage);
+              }
           }
         });
   }

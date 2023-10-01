@@ -1,3 +1,4 @@
+import 'package:doctorkey/widgets/manufactor_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class NewKeyScreen extends StatefulWidget {
@@ -22,19 +23,46 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         child: Column(children: [
           Container(
             margin: const EdgeInsets.all(20),
-            child: TextFormField(
-                style: TextStyle(color: Colors.green.shade300),
-                cursorColor: Colors.green.shade300,
-                decoration: setTextFieldDecoration("Modelo",
-                    Icon(Icons.abc, color: Colors.grey.shade500, size: 38))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Fabricante"),
+                Container(
+                    width: 300,
+                    margin: const EdgeInsets.all(20),
+                    child: const ManufactorDropdown()),
+              ],
+            ),
           ),
           Container(
             margin: const EdgeInsets.all(20),
             child: TextFormField(
                 style: TextStyle(color: Colors.green.shade300),
                 cursorColor: Colors.green.shade300,
+                decoration: setTextFieldDecoration(
+                    "Modelo",
+                    Icon(Icons.directions_car,
+                        color: Colors.grey.shade500, size: 38))),
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: TextFormField(
+                keyboardType: TextInputType.number,
+                style: TextStyle(color: Colors.green.shade300),
+                cursorColor: Colors.green.shade300,
                 decoration: setTextFieldDecoration("Ano",
                     Icon(Icons.pin, color: Colors.grey.shade500, size: 38))),
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: TextFormField(
+                keyboardType: TextInputType.number,
+                style: TextStyle(color: Colors.green.shade300),
+                cursorColor: Colors.green.shade300,
+                decoration: setTextFieldDecoration(
+                    "Número de botões",
+                    Icon(Icons.dialpad,
+                        color: Colors.grey.shade500, size: 38))),
           ),
         ]),
       ),

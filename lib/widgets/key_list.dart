@@ -16,13 +16,27 @@ class _KeyListState extends State<KeyList> {
     return FutureBuilder(
         future: KeyService.fetchAll(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            return buildList(context, snapshot.data);
-          } else {
-            return Container(
-              padding: EdgeInsets.all(30),
-              color: Colors.blue,
-            );
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return Center(
+                child: CircularProgressIndicator(
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+                  strokeWidth: 5.0,
+                ),
+              );
+            case ConnectionState.none:
+              return const Center(
+                child: Text("Nenhuma chave cadastrada!"),
+              );
+            default:
+              if (snapshot.hasError) {
+                return const Center(
+                  child: Text("Ocorreu um erro ao carregar os dados!"),
+                );
+              } else {
+                return buildList(context, snapshot.data);
+              }
           }
         });
   }
