@@ -19,12 +19,10 @@ class NewKeyScreen extends StatefulWidget {
 }
 
 class _NewKeyScreenState extends State<NewKeyScreen> {
-  var manufactorController =
-      TextEditingController(text: Manufactors.list.first);
+  var manufactorController = TextEditingController(text: Manufactors.list.first);
   var keyTypeController = TextEditingController(text: KeyTypes.list.first);
   var bladeTypeController = TextEditingController(text: BladeTypes.list.first);
-  var serviceTypeController =
-      TextEditingController(text: ServiceTypes.list.first);
+  var serviceTypeController = TextEditingController(text: ServiceTypes.list.first);
 
   var modelController = TextEditingController();
   var yearController = TextEditingController();
@@ -132,10 +130,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   controller: modelController,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration(
-                      "Modelo",
-                      Icon(Icons.directions_car,
-                          color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Modelo", Icon(Icons.directions_car, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -144,8 +139,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Ano",
-                      Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Ano", Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -154,10 +148,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration(
-                      "Número de botões",
-                      Icon(Icons.dialpad,
-                          color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Número de botões", Icon(Icons.dialpad, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -166,10 +157,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration(
-                      "Preço",
-                      Icon(Icons.attach_money,
-                          color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Preço", Icon(Icons.attach_money, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -178,10 +166,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   maxLines: 5,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration(
-                      "Observações",
-                      Icon(Icons.article,
-                          color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Observações", Icon(Icons.article, color: Colors.grey.shade600, size: 38))),
             ),
           ]),
         ),
@@ -213,16 +198,11 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
 InputDecoration setTextFieldDecoration(String label, Icon icon) {
   return InputDecoration(
       errorStyle: TextStyle(color: Colors.red.shade200),
-      errorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade200)),
-      focusedErrorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade200)),
-      focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.green.shade400)),
-      enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey.shade600)),
-      border: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)),
+      errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red.shade200)),
+      focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red.shade200)),
+      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.green.shade400)),
+      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade600)),
+      border: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       icon: icon,
       focusColor: Colors.green.shade300,
       labelText: label,

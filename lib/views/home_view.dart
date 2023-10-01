@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../models/User.dart';
+import '../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,8 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
             case ConnectionState.waiting:
               return Center(
                 child: CircularProgressIndicator(
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
                 ),
               );
             case ConnectionState.none:
@@ -49,16 +49,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget buildScaffold(
-    BuildContext context, User user, FlutterSecureStorage storage) {
+Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage storage) {
   return Scaffold(
     appBar: AppBar(
       actions: [
         IconButton(
           onPressed: () {
             storage.deleteAll();
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const InitScreen()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const InitScreen()));
           },
           icon: const Icon(Icons.logout),
           color: Colors.white,
@@ -71,15 +69,11 @@ Widget buildScaffold(
       backgroundColor: Colors.green.shade300,
     ),
     body: const Center(child: KeyList()),
+    bottomNavigationBar: BottomNavigation(),
     floatingActionButton: Container(
       margin: const EdgeInsets.all(15),
       child: FloatingActionButton(
-          onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const NewKeyScreen()))
-              },
+          onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))},
           backgroundColor: Colors.green.shade300,
           elevation: 5,
           child: const Icon(Icons.add, color: Colors.white)),
