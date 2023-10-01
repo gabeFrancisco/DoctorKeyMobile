@@ -1,9 +1,11 @@
+import 'package:doctorkey/repositories/keys_repository.dart';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(create: (context) => KeysRepository(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,8 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Doctor Key',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.green, primary: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, primary: Colors.green),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -30,8 +31,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        body: InitScreen(key: key));
+    return Scaffold(backgroundColor: Theme.of(context).colorScheme.inversePrimary, body: InitScreen(key: key));
   }
 }

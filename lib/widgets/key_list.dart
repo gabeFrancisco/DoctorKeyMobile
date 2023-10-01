@@ -1,8 +1,10 @@
 import 'package:doctorkey/models/Key.dart';
+import 'package:doctorkey/repositories/keys_repository.dart';
 import 'package:doctorkey/services/key_service.dart';
 import 'package:doctorkey/services/login_service.dart';
 import 'package:doctorkey/widgets/key_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class KeyList extends StatefulWidget {
   const KeyList({super.key});
@@ -21,8 +23,7 @@ class _KeyListState extends State<KeyList> {
             case ConnectionState.waiting:
               return Center(
                 child: CircularProgressIndicator(
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
                   strokeWidth: 5.0,
                 ),
               );
@@ -45,7 +46,9 @@ class _KeyListState extends State<KeyList> {
 }
 
 Widget buildList(BuildContext context, List<KeyModel> keys) {
-  return ListView(
-    children: keys.map((e) => KeyCard(model: e)).toList(),
-  );
+  return Consumer<KeysRepository>(builder: (context, cart, child) {
+    return ListView(
+      children: keys.map((e) => KeyCard(model: e)).toList(),
+    );
+  });
 }

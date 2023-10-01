@@ -1,11 +1,13 @@
 import 'package:doctorkey/constants/keyTypes.dart';
 import 'package:doctorkey/constants/manufactors.dart';
 import 'package:doctorkey/models/Key.dart';
+import 'package:doctorkey/repositories/keys_repository.dart';
 import 'package:doctorkey/services/key_service.dart';
 import 'package:doctorkey/widgets/bladeTypes_dropdown.dart';
 import 'package:doctorkey/widgets/keyTypes_dropdown.dart';
 import 'package:doctorkey/widgets/manufactor_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../constants/bladeTypes.dart';
 import '../constants/serviceTypes.dart';
@@ -33,6 +35,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    var keysRepository = Provider.of<KeysRepository>(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -185,7 +188,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                     buttons: buttonsController.text,
                     price: priceController.text,
                     observation: observationController.text,
-                  )).then((_) => Navigator.of(context).pop())
+                  )).then((_) => {keysRepository.getAll(), Navigator.of(context).pop()})
                 },
             backgroundColor: Colors.green.shade300,
             elevation: 5,

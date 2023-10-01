@@ -69,7 +69,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
       backgroundColor: Colors.green.shade300,
     ),
     body: const Center(child: KeyList()),
-    bottomNavigationBar: BottomNavigation(),
+    bottomNavigationBar: const BottomNavigation(),
     floatingActionButton: Container(
       margin: const EdgeInsets.all(15),
       child: FloatingActionButton(
