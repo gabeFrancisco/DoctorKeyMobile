@@ -13,7 +13,7 @@ class InitScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<InitScreen> {
-  final storage = FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
   @override
   Widget build(BuildContext context) {

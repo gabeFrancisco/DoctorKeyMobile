@@ -1,5 +1,7 @@
 import 'package:doctorkey/constants/keyTypes.dart';
 import 'package:doctorkey/constants/manufactors.dart';
+import 'package:doctorkey/models/Key.dart';
+import 'package:doctorkey/services/key_service.dart';
 import 'package:doctorkey/widgets/bladeTypes_dropdown.dart';
 import 'package:doctorkey/widgets/keyTypes_dropdown.dart';
 import 'package:doctorkey/widgets/manufactor_dropdown.dart';
@@ -127,6 +129,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
             Container(
               margin: const EdgeInsets.all(20),
               child: TextFormField(
+                  controller: modelController,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration(
@@ -137,6 +140,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
             Container(
               margin: const EdgeInsets.all(20),
               child: TextFormField(
+                  controller: yearController,
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
@@ -146,6 +150,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
             Container(
               margin: const EdgeInsets.all(20),
               child: TextFormField(
+                  controller: buttonsController,
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
@@ -157,6 +162,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
             Container(
               margin: const EdgeInsets.all(20),
               child: TextFormField(
+                  controller: priceController,
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
@@ -168,6 +174,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
             Container(
               margin: const EdgeInsets.all(20),
               child: TextFormField(
+                  controller: observationController,
                   maxLines: 5,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
@@ -183,10 +190,17 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         margin: const EdgeInsets.all(15),
         child: FloatingActionButton(
             onPressed: () => {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NewKeyScreen()))
+                  KeyService.create(KeyModel(
+                    manufactor: manufactorController.text,
+                    model: modelController.text,
+                    keyType: keyTypeController.text,
+                    bladeType: bladeTypeController.text,
+                    serviceType: serviceTypeController.text,
+                    year: yearController.text,
+                    buttons: buttonsController.text,
+                    price: priceController.text,
+                    observation: observationController.text,
+                  )).then((_) => Navigator.of(context).pop())
                 },
             backgroundColor: Colors.green.shade300,
             elevation: 5,

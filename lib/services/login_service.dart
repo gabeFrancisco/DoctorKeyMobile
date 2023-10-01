@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:doctorkey/models/User.dart';
 import 'package:doctorkey/views/home_view.dart';
+import 'package:doctorkey/views/init_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
@@ -33,5 +34,11 @@ class LoginService {
     } else {
       throw Exception("Failed to load!");
     }
+  }
+
+  static Future<void> clearLoginData(BuildContext context) async {
+    const storage = FlutterSecureStorage();
+    await storage.deleteAll().then((_) => Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const InitScreen())));
   }
 }

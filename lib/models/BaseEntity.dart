@@ -1,7 +1,7 @@
 abstract class BaseEntity {
-  String id;
-  String createdAt;
-  late String? updatedAt;
+  String? id;
+  String? createdAt;
+  String? updatedAt;
 
-  BaseEntity({required this.id, required this.createdAt, this.updatedAt});
+  BaseEntity({this.id, this.createdAt, this.updatedAt});
 }

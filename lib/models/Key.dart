@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:doctorkey/models/BaseEntity.dart';
 
 class KeyModel extends BaseEntity {
@@ -10,7 +12,7 @@ class KeyModel extends BaseEntity {
   String buttons;
   String price;
   String observation;
-  String userId;
+  String? userId;
 
   KeyModel({
     required this.manufactor,
@@ -22,10 +24,10 @@ class KeyModel extends BaseEntity {
     required this.buttons,
     required this.price,
     required this.observation,
-    required this.userId,
-    required super.id,
-    required super.createdAt,
-    required super.updatedAt,
+    this.userId,
+    super.id,
+    super.createdAt,
+    super.updatedAt,
   });
 
   factory KeyModel.fromJson(Map<String, dynamic> json) {
@@ -46,18 +48,14 @@ class KeyModel extends BaseEntity {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
         'manufactor': manufactor,
         'model': model,
-        'keyType:': keyType,
+        'keyType': keyType,
         'bladeType': bladeType,
         'serviceType': serviceType,
         'year': year,
-        'buttons': buttons,
-        'price': price,
+        'buttons': int.parse(buttons),
+        'price': double.parse(price),
         'observation': observation,
-        'userId': userId,
-        'createdAt': createdAt,
-        'updatedAt': updatedAt
       };
 }

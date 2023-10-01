@@ -1,5 +1,6 @@
 import 'package:doctorkey/models/Key.dart';
 import 'package:doctorkey/services/key_service.dart';
+import 'package:doctorkey/services/login_service.dart';
 import 'package:doctorkey/widgets/key_card.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class _KeyListState extends State<KeyList> {
               );
             default:
               if (snapshot.hasError) {
+                LoginService.clearLoginData(context);
                 return const Center(
                   child: Text("Ocorreu um erro ao carregar os dados!"),
                 );
