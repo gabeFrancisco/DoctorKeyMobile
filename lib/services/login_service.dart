@@ -13,8 +13,8 @@ import 'package:http/http.dart' as http;
 class LoginService {
   static const FlutterSecureStorage _storage = FlutterSecureStorage();
 
-  static Future<bool> getLogin(String username, String password, BuildContext context) async {
-    final response = await http.post(Uri.parse('http://10.0.10.250:5003/users/login'),
+  static Future<bool> getLogin(String username, String password) async {
+    final response = await http.post(Uri.parse('https://doctorkeyapi.azurewebsites.net//users/login'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -25,13 +25,10 @@ class LoginService {
       User user = User.fromJson(data["user"]);
       await _storage.write(key: 'user', value: jsonEncode(user));
       await _storage.write(key: "user_token", value: data['token']);
-      if (context.mounted) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
-      }
 
       return true;
     } else if (response.statusCode == 401) {
-      return false;
+      throw Exception("Incorrect credentials!");
     }
 
     return false;

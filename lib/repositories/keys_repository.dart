@@ -20,7 +20,7 @@ class KeysRepository extends ChangeNotifier {
 
   Future<void> getAll() async {
     isLoading = true;
-    final response = await http.get(Uri.parse('http://10.0.10.250:5003/keys'), headers: await getHeaders());
+    final response = await http.get(Uri.parse('https://doctorkeyapi.azurewebsites.net//keys'), headers: await getHeaders());
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body) as List;
       _list = data.reversed.map((e) => KeyModel.fromJson(e)).toList();
