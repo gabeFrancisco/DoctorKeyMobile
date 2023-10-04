@@ -30,4 +30,6 @@ class KeysRepository extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> create() async {}
 }

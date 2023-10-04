@@ -52,33 +52,130 @@ class _HomeScreenState extends State<HomeScreen> {
 Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage storage) {
   return Scaffold(
     appBar: AppBar(
+      leading: Builder(builder: (BuildContext context) {
+        return IconButton(
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 35,
+          ),
+          tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+        );
+      }),
+      centerTitle: true,
+      title: const Text(
+        "Chaves",
+        style: TextStyle(color: Colors.white, fontSize: 18),
+      ),
       actions: [
         IconButton(
           onPressed: () {
             storage.deleteAll();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const InitScreen()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => const InitScreen()));
           },
           icon: const Icon(Icons.logout),
           color: Colors.white,
         )
       ],
-      title: Text(
-        "Bem-vindo ${user.username}!",
-        style: const TextStyle(color: Colors.white, fontSize: 18),
-      ),
       backgroundColor: Colors.green.shade300,
     ),
     body: const Center(child: KeyList()),
     drawer: Drawer(
+      elevation: 4,
       child: ListView(
         padding: EdgeInsets.zero,
-        children: [DrawerHeader(decoration: BoxDecoration(color: Colors.green.shade300), child: Text("Chaves"))],
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: Colors.green.shade300),
+            child: Text(
+              "Bem-vindo ${user.username}!",
+              style: const TextStyle(color: Colors.white, fontSize: 18),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                Icons.bar_chart_sharp,
+                color: Colors.grey.shade600,
+                size: 30,
+              ),
+              title: Text(
+                "Painel",
+                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                Icons.key,
+                color: Colors.grey.shade600,
+                size: 30,
+              ),
+              title: Text(
+                "Chaves",
+                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                Icons.description,
+                color: Colors.grey.shade600,
+                size: 30,
+              ),
+              title: Text(
+                "Ordens de Serviço",
+                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                Icons.task,
+                color: Colors.grey.shade600,
+                size: 30,
+              ),
+              title: Text(
+                "Checklists",
+                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                Icons.group,
+                color: Colors.grey.shade600,
+                size: 30,
+              ),
+              title: Text(
+                "Clientes",
+                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
       ),
     ),
     floatingActionButton: Container(
       margin: const EdgeInsets.all(15),
       child: FloatingActionButton(
-          onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))},
+          onPressed: () => {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))
+              },
           backgroundColor: Colors.green.shade300,
           elevation: 5,
           child: const Icon(Icons.add, color: Colors.white)),

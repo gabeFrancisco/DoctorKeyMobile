@@ -10,8 +10,10 @@ class KeyService {
   static Future<List<KeyModel>> fetchAll() async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'user_token');
-    final response = await http.get(Uri.parse("$apiUrl/keys"),
-        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer $token'});
+    final response = await http.get(Uri.parse("$apiUrl/keys"), headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token'
+    });
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body) as List;
@@ -27,7 +29,11 @@ class KeyService {
     // print(jsonEncode(key));
 
     var response = await http.post(Uri.parse('$apiUrl/keys'),
-        headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer $token'}, body: jsonEncode(key));
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer $token'
+        },
+        body: jsonEncode(key));
     // print(response.body);
     if (response.statusCode == 200) {
       return true;
