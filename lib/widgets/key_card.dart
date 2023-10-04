@@ -13,10 +13,10 @@ class KeyCard extends StatelessWidget {
       onTap: () => print("God bless you!"),
       borderRadius: BorderRadius.circular(10),
       child: Card(
-        elevation: 3,
+        elevation: 7,
+        shadowColor: const Color.fromARGB(65, 145, 145, 145),
         surfaceTintColor: Colors.grey.shade300,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(25))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Container(
           padding: const EdgeInsets.all(15),
@@ -40,9 +40,8 @@ class KeyCard extends StatelessWidget {
                         margin: const EdgeInsets.only(right: 5),
                         child: Text(
                           model.year,
-                          style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontWeight: FontWeight.bold),
+                          style:
+                              TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Container(
@@ -68,9 +67,7 @@ class KeyCard extends StatelessWidget {
                 child: Text(
                   "R\$${model.price}",
                   style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.green.shade400,
-                      fontWeight: FontWeight.bold),
+                      fontSize: 20, color: Colors.green.shade400, fontWeight: FontWeight.bold),
                 ),
               )
             ],
