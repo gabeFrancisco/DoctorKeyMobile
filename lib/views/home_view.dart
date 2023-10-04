@@ -69,7 +69,12 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
       backgroundColor: Colors.green.shade300,
     ),
     body: const Center(child: KeyList()),
-    bottomNavigationBar: const BottomNavigation(),
+    drawer: Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [DrawerHeader(decoration: BoxDecoration(color: Colors.green.shade300), child: Text("Chaves"))],
+      ),
+    ),
     floatingActionButton: Container(
       margin: const EdgeInsets.all(15),
       child: FloatingActionButton(

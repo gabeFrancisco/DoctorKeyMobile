@@ -1,12 +1,14 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:doctorkey/constants/api_urls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import '../models/Key.dart';
 
 class KeysRepository extends ChangeNotifier {
+  final String _url = ApiUrls.list[0];
   List<KeyModel> _list = [];
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
   bool isLoading = false;
@@ -20,7 +22,7 @@ class KeysRepository extends ChangeNotifier {
 
   Future<void> getAll() async {
     isLoading = true;
-    final response = await http.get(Uri.parse('https://doctorkeyapi.azurewebsites.net//keys'), headers: await getHeaders());
+    final response = await http.get(Uri.parse('$_url/keys'), headers: await getHeaders());
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body) as List;
       _list = data.reversed.map((e) => KeyModel.fromJson(e)).toList();
