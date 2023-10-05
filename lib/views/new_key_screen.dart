@@ -133,7 +133,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   controller: modelController,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Modelo", Icon(Icons.directions_car, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration(
+                      "Modelo", Icon(Icons.directions_car, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -142,7 +143,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Ano", Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration(
+                      "Ano", Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -151,7 +153,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Número de botões", Icon(Icons.dialpad, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration("Número de botões",
+                      Icon(Icons.dialpad, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -160,7 +163,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   keyboardType: TextInputType.number,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Preço", Icon(Icons.attach_money, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration(
+                      "Preço", Icon(Icons.attach_money, color: Colors.grey.shade600, size: 38))),
             ),
             Container(
               margin: const EdgeInsets.all(20),
@@ -169,7 +173,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                   maxLines: 5,
                   style: TextStyle(color: Colors.green.shade300),
                   cursorColor: Colors.green.shade300,
-                  decoration: setTextFieldDecoration("Observações", Icon(Icons.article, color: Colors.grey.shade600, size: 38))),
+                  decoration: setTextFieldDecoration(
+                      "Observações", Icon(Icons.article, color: Colors.grey.shade600, size: 38))),
             ),
           ]),
         ),
@@ -185,8 +190,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                     bladeType: bladeTypeController.text,
                     serviceType: serviceTypeController.text,
                     year: yearController.text,
-                    buttons: buttonsController.text,
-                    price: priceController.text,
+                    buttons: int.parse(buttonsController.text),
+                    price: double.parse(priceController.text),
                     observation: observationController.text,
                   )).then((_) => {keysRepository.getAll(), Navigator.of(context).pop()})
                 },

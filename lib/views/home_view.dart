@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:doctorkey/views/new_key_screen.dart';
 import 'package:doctorkey/widgets/key_list.dart';
+import 'package:doctorkey/widgets/numbered_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -86,87 +87,94 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
     body: const Center(child: KeyList()),
     drawer: Drawer(
       elevation: 4,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.green.shade300),
-            child: Text(
-              "Bem-vindo ${user.username}!",
-              style: const TextStyle(color: Colors.white, fontSize: 18),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(
-                Icons.bar_chart_sharp,
-                color: Colors.grey.shade600,
-                size: 30,
-              ),
-              title: Text(
-                "Painel",
-                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+      child: Container(
+        color: Colors.white,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.green.shade300),
+              child: Text(
+                "Bem-vindo ${user.username}!",
+                style: const TextStyle(color: Colors.white, fontSize: 18),
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(
-                Icons.key,
-                color: Colors.grey.shade600,
-                size: 30,
-              ),
-              title: Text(
-                "Chaves",
-                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(
-                Icons.description,
-                color: Colors.grey.shade600,
-                size: 30,
-              ),
-              title: Text(
-                "Ordens de Serviço",
-                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: ListTile(
+                leading: Icon(
+                  Icons.bar_chart_sharp,
+                  color: Colors.grey.shade600,
+                  size: 30,
+                ),
+                title: Text(
+                  "Painel",
+                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(
-                Icons.task,
-                color: Colors.grey.shade600,
-                size: 30,
-              ),
-              title: Text(
-                "Checklists",
-                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(
-                Icons.group,
-                color: Colors.grey.shade600,
-                size: 30,
-              ),
-              title: Text(
-                "Clientes",
-                style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: ListTile(
+                leading: Icon(
+                  Icons.key,
+                  color: Colors.grey.shade600,
+                  size: 30,
+                ),
+                title: Text(
+                  "Chaves",
+                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => const NewKeyScreen()));
+                },
               ),
             ),
-          ),
-        ],
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: ListTile(
+                  leading: Icon(
+                    Icons.description,
+                    color: Colors.grey.shade600,
+                    size: 30,
+                  ),
+                  title: Text(
+                    "Ordens de Serviço",
+                    style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                  ),
+                  trailing: const NumberedNotification(number: 3)),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: ListTile(
+                leading: Icon(
+                  Icons.task,
+                  color: Colors.grey.shade600,
+                  size: 30,
+                ),
+                title: Text(
+                  "Checklists",
+                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: ListTile(
+                leading: Icon(
+                  Icons.group,
+                  color: Colors.grey.shade600,
+                  size: 30,
+                ),
+                title: Text(
+                  "Clientes",
+                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     ),
     floatingActionButton: Container(

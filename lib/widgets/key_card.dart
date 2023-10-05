@@ -65,7 +65,7 @@ class KeyCard extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.all(5),
                 child: Text(
-                  "R\$${model.price}",
+                  "R\$${model.price.toStringAsFixed(2)}",
                   style: TextStyle(
                       fontSize: 20, color: Colors.green.shade400, fontWeight: FontWeight.bold),
                 ),

@@ -9,8 +9,8 @@ class KeyModel extends BaseEntity {
   String bladeType;
   String serviceType;
   String year;
-  String buttons;
-  String price;
+  int buttons;
+  double price;
   String observation;
   String? userId;
 
@@ -39,8 +39,8 @@ class KeyModel extends BaseEntity {
         bladeType: json['bladeType'],
         serviceType: json['serviceType'],
         year: json['year'],
-        buttons: json['buttons'].toString(),
-        price: json['price'].toString(),
+        buttons: json['buttons'],
+        price: json['price'],
         observation: json['observation'],
         userId: json['userId'],
         createdAt: '',
@@ -54,8 +54,8 @@ class KeyModel extends BaseEntity {
         'bladeType': bladeType,
         'serviceType': serviceType,
         'year': year,
-        'buttons': int.parse(buttons),
-        'price': double.parse(price),
+        'buttons': buttons,
+        'price': price,
         'observation': observation,
       };
 }
