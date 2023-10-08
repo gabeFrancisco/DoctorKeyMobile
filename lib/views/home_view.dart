@@ -73,12 +73,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
       ),
       actions: [
         IconButton(
-          onPressed: () {
-            storage.deleteAll();
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const InitScreen()));
+          onPressed: () => {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))
           },
-          icon: const Icon(Icons.logout),
+          icon: const Icon(
+            Icons.add,
+            size: 34,
+          ),
           color: Colors.white,
         )
       ],
@@ -172,17 +173,6 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           ],
         ),
       ),
-    ),
-    floatingActionButton: Container(
-      margin: const EdgeInsets.all(15),
-      child: FloatingActionButton(
-          onPressed: () => {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))
-              },
-          backgroundColor: Colors.green.shade400,
-          elevation: 5,
-          child: const Icon(Icons.add, color: Colors.white)),
     ),
   );
 }
