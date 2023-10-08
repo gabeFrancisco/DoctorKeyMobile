@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:doctorkey/repositories/user_repository.dart';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:doctorkey/views/new_key_screen.dart';
 import 'package:doctorkey/widgets/key_list.dart';
 import 'package:doctorkey/widgets/numbered_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:provider/provider.dart';
 
 import '../models/User.dart';
 import '../widgets/bottomNavigation.dart';
@@ -95,9 +97,23 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           children: [
             DrawerHeader(
               decoration: BoxDecoration(color: Colors.green.shade400),
-              child: Text(
-                "Bem-vindo ${user.username}!",
-                style: const TextStyle(color: Colors.white, fontSize: 18),
+              child: Column(
+                children: [
+                  Text(
+                    "Bem-vindo ${user.username}!",
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        storage.deleteAll();
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => const InitScreen()));
+                      },
+                      child: const Text(
+                        "Sair",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ))
+                ],
               ),
             ),
             Container(
