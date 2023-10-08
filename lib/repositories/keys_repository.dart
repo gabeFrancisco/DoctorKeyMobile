@@ -8,14 +8,17 @@ import 'package:http/http.dart' as http;
 import '../models/Key.dart';
 
 class KeysRepository extends ChangeNotifier {
-  final String _url = ApiUrls.list[0];
+  final String _url = ApiUrls.list[1];
   List<KeyModel> _list = [];
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
   bool isLoading = false;
 
   Future<Map<String, String>> getHeaders() async {
     var token = await _storage.read(key: "user_token");
-    return <String, String>{'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer $token'};
+    return <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer $token'
+    };
   }
 
   UnmodifiableListView<KeyModel> get list => UnmodifiableListView(_list);
@@ -31,5 +34,15 @@ class KeysRepository extends ChangeNotifier {
     }
   }
 
-  Future<void> create() async {}
+  Future<bool> create(KeyModel key) async {
+    var response = await http.post(Uri.parse('$_url/keys'),
+        headers: await getHeaders(), body: jsonEncode(key));
+    // print(response.body);
+    if (response.statusCode == 200) {
+      notifyListeners();
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

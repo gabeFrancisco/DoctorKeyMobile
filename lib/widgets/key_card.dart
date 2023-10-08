@@ -15,7 +15,7 @@ class KeyCard extends StatelessWidget {
       child: Card(
         elevation: 7,
         shadowColor: const Color.fromARGB(65, 145, 145, 145),
-        surfaceTintColor: Colors.grey.shade300,
+        surfaceTintColor: Colors.grey.shade400,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Container(

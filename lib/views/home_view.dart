@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             case ConnectionState.waiting:
               return Center(
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade400),
                 ),
               );
             case ConnectionState.none:
@@ -82,7 +82,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           color: Colors.white,
         )
       ],
-      backgroundColor: Colors.green.shade300,
+      backgroundColor: Colors.green.shade400,
     ),
     body: const Center(child: KeyList()),
     drawer: Drawer(
@@ -93,7 +93,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.green.shade300),
+              decoration: BoxDecoration(color: Colors.green.shade400),
               child: Text(
                 "Bem-vindo ${user.username}!",
                 style: const TextStyle(color: Colors.white, fontSize: 18),
@@ -125,10 +125,6 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
                   "Chaves",
                   style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
                 ),
-                onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => const NewKeyScreen()));
-                },
               ),
             ),
             Container(
@@ -184,7 +180,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))
               },
-          backgroundColor: Colors.green.shade300,
+          backgroundColor: Colors.green.shade400,
           elevation: 5,
           child: const Icon(Icons.add, color: Colors.white)),
     ),

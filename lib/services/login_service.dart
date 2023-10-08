@@ -13,11 +13,12 @@ class LoginService {
   static const FlutterSecureStorage _storage = FlutterSecureStorage();
 
   static Future<bool> getLogin(String username, String password) async {
-    final response = await http.post(Uri.parse('https://doctorkeyapi.azurewebsites.net//users/login'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-        body: jsonEncode(<String, String>{'username': username, 'password': password}));
+    final response =
+        await http.post(Uri.parse('https://doctorkeyapi.azurewebsites.net//users/login'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode(<String, String>{'username': username, 'password': password}));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -34,6 +35,7 @@ class LoginService {
   }
 
   static Future<void> clearLoginData(BuildContext context) async {
-    await _storage.deleteAll().then((_) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const InitScreen())));
+    await _storage.deleteAll().then((_) => Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const InitScreen())));
   }
 }

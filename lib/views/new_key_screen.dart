@@ -2,7 +2,6 @@ import 'package:doctorkey/constants/keyTypes.dart';
 import 'package:doctorkey/constants/manufactors.dart';
 import 'package:doctorkey/models/Key.dart';
 import 'package:doctorkey/repositories/keys_repository.dart';
-import 'package:doctorkey/services/key_service.dart';
 import 'package:doctorkey/widgets/bladeTypes_dropdown.dart';
 import 'package:doctorkey/widgets/keyTypes_dropdown.dart';
 import 'package:doctorkey/widgets/manufactor_dropdown.dart';
@@ -42,7 +41,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         foregroundColor: Colors.white,
         centerTitle: true,
         title: const Text("Nova chave"),
-        backgroundColor: Colors.green.shade300,
+        backgroundColor: Colors.green.shade400,
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -131,8 +130,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               margin: const EdgeInsets.all(20),
               child: TextFormField(
                   controller: modelController,
-                  style: TextStyle(color: Colors.green.shade300),
-                  cursorColor: Colors.green.shade300,
+                  style: TextStyle(color: Colors.green.shade400),
+                  cursorColor: Colors.green.shade400,
                   decoration: setTextFieldDecoration(
                       "Modelo", Icon(Icons.directions_car, color: Colors.grey.shade600, size: 38))),
             ),
@@ -141,8 +140,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: yearController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade300),
-                  cursorColor: Colors.green.shade300,
+                  style: TextStyle(color: Colors.green.shade400),
+                  cursorColor: Colors.green.shade400,
                   decoration: setTextFieldDecoration(
                       "Ano", Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
             ),
@@ -151,8 +150,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: buttonsController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade300),
-                  cursorColor: Colors.green.shade300,
+                  style: TextStyle(color: Colors.green.shade400),
+                  cursorColor: Colors.green.shade400,
                   decoration: setTextFieldDecoration("Número de botões",
                       Icon(Icons.dialpad, color: Colors.grey.shade600, size: 38))),
             ),
@@ -161,8 +160,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: priceController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade300),
-                  cursorColor: Colors.green.shade300,
+                  style: TextStyle(color: Colors.green.shade400),
+                  cursorColor: Colors.green.shade400,
                   decoration: setTextFieldDecoration(
                       "Preço", Icon(Icons.attach_money, color: Colors.grey.shade600, size: 38))),
             ),
@@ -171,8 +170,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: observationController,
                   maxLines: 5,
-                  style: TextStyle(color: Colors.green.shade300),
-                  cursorColor: Colors.green.shade300,
+                  style: TextStyle(color: Colors.green.shade400),
+                  cursorColor: Colors.green.shade400,
                   decoration: setTextFieldDecoration(
                       "Observações", Icon(Icons.article, color: Colors.grey.shade600, size: 38))),
             ),
@@ -183,19 +182,21 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         margin: const EdgeInsets.all(15),
         child: FloatingActionButton(
             onPressed: () => {
-                  KeyService.create(KeyModel(
-                    manufactor: manufactorController.text,
-                    model: modelController.text,
-                    keyType: keyTypeController.text,
-                    bladeType: bladeTypeController.text,
-                    serviceType: serviceTypeController.text,
-                    year: yearController.text,
-                    buttons: int.parse(buttonsController.text),
-                    price: double.parse(priceController.text),
-                    observation: observationController.text,
-                  )).then((_) => {keysRepository.getAll(), Navigator.of(context).pop()})
+                  keysRepository
+                      .create(KeyModel(
+                        manufactor: manufactorController.text,
+                        model: modelController.text,
+                        keyType: keyTypeController.text,
+                        bladeType: bladeTypeController.text,
+                        serviceType: serviceTypeController.text,
+                        year: yearController.text,
+                        buttons: int.parse(buttonsController.text),
+                        price: double.parse(priceController.text),
+                        observation: observationController.text,
+                      ))
+                      .then((_) => {keysRepository.getAll(), Navigator.of(context).pop()})
                 },
-            backgroundColor: Colors.green.shade300,
+            backgroundColor: Colors.green.shade400,
             elevation: 5,
             child: const Icon(Icons.check, color: Colors.white)),
       ),
@@ -212,7 +213,7 @@ InputDecoration setTextFieldDecoration(String label, Icon icon) {
       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade600)),
       border: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       icon: icon,
-      focusColor: Colors.green.shade300,
+      focusColor: Colors.green.shade400,
       labelText: label,
       labelStyle: TextStyle(color: Colors.grey.shade600));
 }

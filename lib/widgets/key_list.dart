@@ -30,7 +30,7 @@ class _KeyListState extends State<KeyList> {
       if (cart.isLoading) {
         return Center(
           child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade300),
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.green.shade400),
           ),
         );
       } else if (cart.list.isEmpty) {
