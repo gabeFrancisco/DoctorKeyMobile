@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(MultiProvider(
     providers: [
-      Provider<UserRepository>.value(value: UserRepository()),
-      Provider<KeysRepository>.value(value: KeysRepository())
+      ChangeNotifierProvider<UserRepository>.value(value: UserRepository()),
+      ChangeNotifierProvider<KeysRepository>.value(value: KeysRepository())
     ],
     child: const MyApp(),
   ));
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       title: 'Doctor Key',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green, primary: Colors.green),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.green.shade400, primary: Colors.green.shade400),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),

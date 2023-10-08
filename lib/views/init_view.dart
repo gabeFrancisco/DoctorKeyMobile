@@ -125,6 +125,7 @@ class _LoginScreenState extends State<InitScreen> {
                               userRepository
                                   .login(usernameCotnroller.text, passwordController.text)
                                   .then((res) => {
+                                        print(res),
                                         if (res == 200)
                                           {
                                             setLoading(false),
