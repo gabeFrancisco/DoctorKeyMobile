@@ -10,7 +10,6 @@ class KeyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.green.shade100,
-      onTap: () => print("God bless you!"),
       borderRadius: BorderRadius.circular(10),
       child: Card(
         elevation: 7,
@@ -20,55 +19,92 @@ class KeyCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Container(
           padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    model.model,
+                    "${model.manufactor} ${model.model}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                       color: Colors.grey.shade700,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        child: Text(
+                  Container(
+                    margin: const EdgeInsets.all(5),
+                    child: Text(
+                      "R\$${model.price.toStringAsFixed(2)}",
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.green.shade400, fontWeight: FontWeight.bold),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(right: 5),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 5),
+                          child: Icon(
+                            Icons.pin,
+                            color: Colors.grey.shade500,
+                          ),
+                        ),
+                        Text(
                           model.year,
                           style:
                               TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
                         ),
-                      ),
+                      ],
+                    ),
+                  ),
+                  Wrap(
+                    children: [
                       Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Text(
-                          model.keyType,
-                          style: TextStyle(color: Colors.grey.shade600),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Text(
-                          model.bladeType,
-                          style: TextStyle(color: Colors.grey.shade600),
+                        margin: const EdgeInsets.only(right: 5),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(right: 5),
+                              child: Icon(
+                                Icons.type_specimen,
+                                color: Colors.grey.shade500,
+                              ),
+                            ),
+                            Text(
+                              model.keyType,
+                              style: TextStyle(color: Colors.grey.shade600),
+                            ),
+                          ],
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  Wrap(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Row(
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.only(right: 5),
+                                child: Icon(Icons.key, color: Colors.grey.shade500)),
+                            Text(
+                              model.bladeType,
+                              style: TextStyle(color: Colors.grey.shade600),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
-              ),
-              Container(
-                margin: const EdgeInsets.all(5),
-                child: Text(
-                  "R\$${model.price.toStringAsFixed(2)}",
-                  style: TextStyle(
-                      fontSize: 20, color: Colors.green.shade400, fontWeight: FontWeight.bold),
-                ),
               )
             ],
           ),

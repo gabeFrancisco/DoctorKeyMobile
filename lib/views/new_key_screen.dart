@@ -41,7 +41,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         foregroundColor: Colors.white,
         centerTitle: true,
         title: const Text("Nova chave"),
-        backgroundColor: Colors.green.shade400,
+        backgroundColor: Colors.green.shade300,
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -130,8 +130,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               margin: const EdgeInsets.all(20),
               child: TextFormField(
                   controller: modelController,
-                  style: TextStyle(color: Colors.green.shade400),
-                  cursorColor: Colors.green.shade400,
+                  style: TextStyle(color: Colors.green.shade300),
+                  cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration(
                       "Modelo", Icon(Icons.directions_car, color: Colors.grey.shade600, size: 38))),
             ),
@@ -140,8 +140,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: yearController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade400),
-                  cursorColor: Colors.green.shade400,
+                  style: TextStyle(color: Colors.green.shade300),
+                  cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration(
                       "Ano", Icon(Icons.pin, color: Colors.grey.shade600, size: 38))),
             ),
@@ -150,8 +150,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: buttonsController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade400),
-                  cursorColor: Colors.green.shade400,
+                  style: TextStyle(color: Colors.green.shade300),
+                  cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration("Número de botões",
                       Icon(Icons.dialpad, color: Colors.grey.shade600, size: 38))),
             ),
@@ -160,8 +160,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: priceController,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.green.shade400),
-                  cursorColor: Colors.green.shade400,
+                  style: TextStyle(color: Colors.green.shade300),
+                  cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration(
                       "Preço", Icon(Icons.attach_money, color: Colors.grey.shade600, size: 38))),
             ),
@@ -170,8 +170,8 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
               child: TextFormField(
                   controller: observationController,
                   maxLines: 5,
-                  style: TextStyle(color: Colors.green.shade400),
-                  cursorColor: Colors.green.shade400,
+                  style: TextStyle(color: Colors.green.shade300),
+                  cursorColor: Colors.green.shade300,
                   decoration: setTextFieldDecoration(
                       "Observações", Icon(Icons.article, color: Colors.grey.shade600, size: 38))),
             ),
@@ -196,7 +196,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
                       ))
                       .then((_) => {keysRepository.getAll(), Navigator.of(context).pop()})
                 },
-            backgroundColor: Colors.green.shade400,
+            backgroundColor: Colors.green.shade300,
             elevation: 5,
             child: const Icon(Icons.check, color: Colors.white)),
       ),
@@ -213,7 +213,7 @@ InputDecoration setTextFieldDecoration(String label, Icon icon) {
       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade600)),
       border: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       icon: icon,
-      focusColor: Colors.green.shade400,
+      focusColor: Colors.green.shade300,
       labelText: label,
       labelStyle: TextStyle(color: Colors.grey.shade600));
 }
