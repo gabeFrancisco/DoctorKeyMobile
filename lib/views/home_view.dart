@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text("Ocorreu um erro ao carregar os dados!"),
                 );
               } else {
+                storage.read(key: 'token_exp').then((value) => print(value));
                 User user = User.fromJson(json.decode(snapshot.data));
                 return buildScaffold(context, user, storage);
               }

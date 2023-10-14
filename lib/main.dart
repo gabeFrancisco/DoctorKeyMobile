@@ -24,10 +24,13 @@ class MyApp extends StatelessWidget {
       title: 'Doctor Key',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.green.shade400, primary: Colors.green.shade400),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.green.shade400, primary: Colors.green.shade400),
+          useMaterial3: true,
+          textTheme: TextTheme(
+              bodyMedium:
+                  TextStyle(color: Colors.grey.shade600).apply(color: Colors.grey.shade600)),
+          iconTheme: IconThemeData(color: Colors.grey.shade600)),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

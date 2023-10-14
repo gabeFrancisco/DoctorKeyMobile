@@ -11,40 +11,91 @@ class KeyView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
-        title: Text(model.model, style: const TextStyle(color: Colors.white, fontSize: 18)),
         centerTitle: true,
         backgroundColor: Colors.green.shade400,
       ),
-      body: Center(
-          child: Column(
+      body: Column(
         children: [
           Container(
               width: double.infinity,
-              margin: const EdgeInsets.all(25),
+              margin: const EdgeInsets.only(bottom: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               decoration: BoxDecoration(
+                  color: Colors.green.shade400,
                   border: Border.all(color: Colors.green.shade400, width: 2),
-                  borderRadius: const BorderRadius.all(Radius.circular(10))),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(model.manufactor,
-                      style: TextStyle(
-                          color: Colors.green.shade400, fontSize: 27, fontWeight: FontWeight.w600)),
-                  Text(model.model,
-                      style: TextStyle(
-                          color: Colors.green.shade400, fontSize: 27, fontWeight: FontWeight.w600))
-                ],
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(35), bottomRight: Radius.circular(35))),
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Text("${model.manufactor} - ${model.model}",
+                      style: const TextStyle(
+                          color: Colors.white, fontSize: 27, fontWeight: FontWeight.w600)),
+                ),
               )),
-          Text(model.model),
-          Text(model.keyType),
-          Text(model.bladeType),
-          Text(model.serviceType),
-          Text(model.year),
-          Text(model.buttons.toString()),
-          Text(model.price.toStringAsFixed(2)),
-          Text(model.observation),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(Icons.type_specimen),
+                Text(model.keyType),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(Icons.try_sms_star_rounded),
+                Text(model.bladeType),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(Icons.design_services),
+                Text(model.serviceType),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(Icons.pin),
+                Text(model.year),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(Icons.dialpad),
+                Text(model.buttons.toString()),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.attach_money,
+                  size: 36,
+                ),
+                Text(
+                  model.price.toStringAsFixed(2),
+                  style: TextStyle(
+                      color: Colors.green.shade500, fontWeight: FontWeight.bold, fontSize: 30),
+                ),
+              ],
+            ),
+          ),
         ],
-      )),
+      ),
     );
   }
 }

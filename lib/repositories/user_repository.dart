@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import '../models/User.dart';
 
 class UserRepository extends ChangeNotifier {
-  final String _apiUrl = ApiUrls.list[1];
+  final String _apiUrl = ApiUrls.list[0];
   late User user;
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
   bool isLoading = false;
@@ -30,8 +30,9 @@ class UserRepository extends ChangeNotifier {
       User user = User.fromJson(data["user"]);
       user = user;
 
-      await _storage.write(key: 'user', value: jsonEncode(user));
+      await _storage.write(key: "user", value: jsonEncode(user));
       await _storage.write(key: "user_token", value: data['token']);
+      await _storage.write(key: "token_exp", value: data["expire"]);
     }
 
     return response.statusCode;
