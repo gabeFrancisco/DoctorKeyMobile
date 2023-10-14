@@ -41,7 +41,7 @@ class _NewKeyScreenState extends State<NewKeyScreen> {
         foregroundColor: Colors.white,
         centerTitle: true,
         title: const Text("Nova chave"),
-        backgroundColor: Colors.green.shade300,
+        backgroundColor: Colors.green.shade400,
       ),
       body: SingleChildScrollView(
         child: Form(

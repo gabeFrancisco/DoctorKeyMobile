@@ -1,3 +1,4 @@
+import 'package:doctorkey/views/key_view.dart';
 import 'package:flutter/material.dart';
 
 import '../models/Key.dart';
@@ -11,6 +12,9 @@ class KeyCard extends StatelessWidget {
     return InkWell(
       splashColor: Colors.green.shade100,
       borderRadius: BorderRadius.circular(10),
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => KeyView(model: model)));
+      },
       child: Card(
         elevation: 7,
         shadowColor: const Color.fromARGB(65, 145, 145, 145),

@@ -1,16 +1,11 @@
 import 'dart:convert';
-
-import 'package:doctorkey/repositories/user_repository.dart';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:doctorkey/views/new_key_screen.dart';
 import 'package:doctorkey/widgets/key_list.dart';
 import 'package:doctorkey/widgets/numbered_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:provider/provider.dart';
-
 import '../models/User.dart';
-import '../widgets/bottomNavigation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
