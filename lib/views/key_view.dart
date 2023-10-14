@@ -1,3 +1,4 @@
+import 'package:doctorkey/views/update_key_view.dart';
 import 'package:doctorkey/widgets/key_view_info.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,12 @@ class KeyView extends StatelessWidget {
         title: Text("${model.manufactor} - ${model.model}",
             style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UpdateKeyView(keyModel: model)));
+              },
+              icon: const Icon(Icons.edit)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
         ],
       ),
