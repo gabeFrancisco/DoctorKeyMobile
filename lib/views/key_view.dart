@@ -13,24 +13,27 @@ class KeyView extends StatelessWidget {
         foregroundColor: Colors.white,
         centerTitle: true,
         backgroundColor: Colors.green.shade400,
+        title: Text("${model.manufactor} - ${model.model}",
+            style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w600)),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+        ],
       ),
       body: Column(
         children: [
           Container(
               width: double.infinity,
               margin: const EdgeInsets.only(bottom: 25),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               decoration: BoxDecoration(
                   color: Colors.green.shade400,
                   border: Border.all(color: Colors.green.shade400, width: 2),
                   borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(35), bottomRight: Radius.circular(35))),
+                      bottomLeft: Radius.circular(50), bottomRight: Radius.circular(35))),
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.all(15),
-                  child: Text("${model.manufactor} - ${model.model}",
-                      style: const TextStyle(
-                          color: Colors.white, fontSize: 27, fontWeight: FontWeight.w600)),
+                  padding: const EdgeInsets.all(7),
                 ),
               )),
           Container(
