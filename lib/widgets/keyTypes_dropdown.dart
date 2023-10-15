@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class KeyTypesDropdown extends StatefulWidget {
   final Function(String?)? onChanged;
   final String initialValue;
-  const KeyTypesDropdown(
-      {super.key, required this.onChanged, required this.initialValue});
+  const KeyTypesDropdown({super.key, required this.onChanged, required this.initialValue});
 
   @override
   State<KeyTypesDropdown> createState() => _KeyTypesDropdownState();
@@ -24,7 +23,7 @@ class _KeyTypesDropdownState extends State<KeyTypesDropdown> {
         items: KeyTypes.list.map<DropdownMenuItem<String>>((String item) {
           return DropdownMenuItem<String>(
             value: item,
-            child: Text(item),
+            child: Text(item, style: const TextStyle(fontSize: 14)),
           );
         }).toList(),
       ),

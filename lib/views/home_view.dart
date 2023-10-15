@@ -59,7 +59,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           icon: const Icon(
             Icons.menu,
             color: Colors.white,
-            size: 35,
+            size: 30,
           ),
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
         );
@@ -76,7 +76,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
           },
           icon: const Icon(
             Icons.add,
-            size: 34,
+            size: 32,
           ),
           color: Colors.white,
         )
@@ -97,7 +97,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
                 children: [
                   Text(
                     "Bem-vindo ${user.username}!",
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   TextButton(
                       onPressed: () {
@@ -107,7 +107,7 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
                       },
                       child: const Text(
                         "Sair",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        style: TextStyle(color: Colors.white),
                       ))
                 ],
               ),
@@ -117,12 +117,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
               child: ListTile(
                 leading: Icon(
                   Icons.bar_chart_sharp,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade400,
                   size: 30,
                 ),
                 title: Text(
                   "Painel",
-                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               ),
             ),
@@ -131,12 +132,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
               child: ListTile(
                 leading: Icon(
                   Icons.key,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade400,
                   size: 30,
                 ),
                 title: Text(
                   "Chaves",
-                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               ),
             ),
@@ -145,12 +147,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
               child: ListTile(
                   leading: Icon(
                     Icons.description,
-                    color: Colors.grey.shade600,
+                    color: Colors.grey.shade400,
                     size: 30,
                   ),
                   title: Text(
                     "Ordens de Serviço",
-                    style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                   trailing: const NumberedNotification(number: 3)),
             ),
@@ -159,12 +162,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
               child: ListTile(
                 leading: Icon(
                   Icons.task,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade400,
                   size: 30,
                 ),
                 title: Text(
                   "Checklists",
-                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               ),
             ),
@@ -173,12 +177,13 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
               child: ListTile(
                 leading: Icon(
                   Icons.group,
-                  color: Colors.grey.shade600,
+                  color: Colors.grey.shade400,
                   size: 30,
                 ),
                 title: Text(
                   "Clientes",
-                  style: TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 14),
                 ),
               ),
             ),

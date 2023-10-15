@@ -33,7 +33,7 @@ class KeyCard extends StatelessWidget {
                     "${model.manufactor} ${model.model}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Colors.grey.shade700,
                     ),
                   ),
@@ -42,7 +42,7 @@ class KeyCard extends StatelessWidget {
                     child: Text(
                       "R\$${model.price.toStringAsFixed(2)}",
                       style: TextStyle(
-                          fontSize: 20, color: Colors.green.shade400, fontWeight: FontWeight.bold),
+                          fontSize: 18, color: Colors.green.shade400, fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
@@ -62,8 +62,10 @@ class KeyCard extends StatelessWidget {
                         ),
                         Text(
                           model.year,
-                          style:
-                              TextStyle(color: Colors.grey.shade600, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
                         ),
                       ],
                     ),
@@ -83,7 +85,7 @@ class KeyCard extends StatelessWidget {
                             ),
                             Text(
                               model.keyType,
-                              style: TextStyle(color: Colors.grey.shade600),
+                              style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
                             ),
                           ],
                         ),
@@ -101,7 +103,7 @@ class KeyCard extends StatelessWidget {
                                 child: Icon(Icons.key, color: Colors.grey.shade500)),
                             Text(
                               model.bladeType,
-                              style: TextStyle(color: Colors.grey.shade600),
+                              style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
                             ),
                           ],
                         ),

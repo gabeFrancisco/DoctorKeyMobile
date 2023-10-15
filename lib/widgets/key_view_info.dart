@@ -10,10 +10,10 @@ class KeyViewInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300, width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(7))),
+        border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1.5)),
+      ),
       child: Row(
         children: [
           Icon(
@@ -24,7 +24,7 @@ class KeyViewInfo extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(
                 "$label: $data",
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
               )),
         ],
       ),

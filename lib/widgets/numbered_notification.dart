@@ -8,7 +8,7 @@ class NumberedNotification extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(50)), color: Colors.red.shade400),
+          borderRadius: const BorderRadius.all(Radius.circular(50)), color: Colors.red.shade300),
       padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
       child: Text(
         number.toString(),

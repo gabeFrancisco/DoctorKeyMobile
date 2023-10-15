@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 class ManufactorDropdown extends StatefulWidget {
   final Function(String?)? onChanged;
   final String initialValue;
-  const ManufactorDropdown(
-      {super.key, required this.onChanged, required this.initialValue});
+  const ManufactorDropdown({super.key, required this.onChanged, required this.initialValue});
 
   @override
   State<ManufactorDropdown> createState() => _ManufactorDropdownState();
@@ -24,7 +23,10 @@ class _ManufactorDropdownState extends State<ManufactorDropdown> {
         items: Manufactors.list.map<DropdownMenuItem<String>>((String item) {
           return DropdownMenuItem<String>(
             value: item,
-            child: Text(item),
+            child: Text(
+              item,
+              style: const TextStyle(fontSize: 14),
+            ),
           );
         }).toList(),
       ),

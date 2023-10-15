@@ -61,39 +61,47 @@ class KeyView extends StatelessWidget {
           KeyViewInfo(label: "Botões", data: model.buttons.toString(), icon: Icons.dialpad),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade300, width: 2),
-                borderRadius: const BorderRadius.all(Radius.circular(7))),
-            child: Row(
+                border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(
-                  Icons.text_fields,
-                  size: 30,
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.text_fields,
+                      size: 30,
+                    ),
+                    Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: const Text(
+                          "Observações: ",
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                        )),
+                  ],
                 ),
                 Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      "Observações: ${model.observation}",
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                    )),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: Text(model.observation))
               ],
             ),
           ),
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
-                  Icons.attach_money,
-                  size: 36,
-                  color: Colors.green.shade500,
+                Text(
+                  "Preço: ",
+                  style: TextStyle(
+                      color: Colors.grey.shade600, fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 Text(
                   "R\$${model.price.toStringAsFixed(2)}",
                   style: TextStyle(
-                      color: Colors.green.shade500, fontWeight: FontWeight.bold, fontSize: 30),
+                      color: Colors.green.shade500, fontWeight: FontWeight.bold, fontSize: 24),
                 ),
               ],
             ),
