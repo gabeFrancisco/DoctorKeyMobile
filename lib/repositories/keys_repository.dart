@@ -28,6 +28,7 @@ class KeysRepository extends ChangeNotifier {
     final response = await http.get(Uri.parse('$_url/keys'), headers: await getHeaders());
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body) as List;
+      // print(data);
       _list = data.reversed.map((e) => KeyModel.fromJson(e)).toList();
       isLoading = false;
       notifyListeners();
@@ -37,7 +38,17 @@ class KeysRepository extends ChangeNotifier {
   Future<bool> create(KeyModel key) async {
     var response = await http.post(Uri.parse('$_url/keys'),
         headers: await getHeaders(), body: jsonEncode(key));
-    // print(response.body);
+    if (response.statusCode == 200) {
+      notifyListeners();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> update(KeyModel key, String id) async {
+    var response = await http.put(Uri.parse('$_url/keys/$id'),
+        headers: await getHeaders(), body: jsonEncode(key));
     if (response.statusCode == 200) {
       notifyListeners();
       return true;

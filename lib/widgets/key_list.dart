@@ -15,14 +15,12 @@ class _KeyListState extends State<KeyList> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<KeysRepository>(context, listen: false).getAll();
-    });
+    Provider.of<KeysRepository>(context, listen: false).getAll();
   }
 
   @override
   Widget build(BuildContext context) {
-    var keys = Provider.of<KeysRepository>(context);
+    var keys = Provider.of<KeysRepository>(context, listen: true).list;
     return Consumer<KeysRepository>(builder: (context, cart, child) {
       if (cart.isLoading) {
         return Center(
@@ -36,7 +34,7 @@ class _KeyListState extends State<KeyList> {
         );
       } else {
         return ListView(
-          children: keys.list.map((e) => KeyCard(model: e)).toList(),
+          children: keys.map((e) => KeyCard(model: e)).toList(),
         );
       }
     });
