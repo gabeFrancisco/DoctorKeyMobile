@@ -11,7 +11,7 @@ class KeyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.green.shade100,
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(25),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => KeyView(model: model)));
       },
@@ -19,7 +19,7 @@ class KeyCard extends StatelessWidget {
         elevation: 7,
         shadowColor: const Color.fromARGB(65, 145, 145, 145),
         surfaceTintColor: Colors.grey.shade400,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Container(
           padding: const EdgeInsets.all(15),
