@@ -1,6 +1,9 @@
+import 'package:doctorkey/repositories/keys_repository.dart';
+import 'package:doctorkey/views/home_view.dart';
 import 'package:doctorkey/views/update_key_view.dart';
 import 'package:doctorkey/widgets/key_view_info.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/Key.dart';
 
@@ -10,6 +13,7 @@ class KeyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var keyRepository = Provider.of<KeysRepository>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -24,7 +28,14 @@ class KeyView extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => UpdateKeyView(keyModel: model)));
               },
               icon: const Icon(Icons.edit)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+          IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        removeDialog(context, keyRepository, model.id!));
+              },
+              icon: const Icon(Icons.delete))
         ],
       ),
       body: Column(
@@ -91,4 +102,32 @@ class KeyView extends StatelessWidget {
       ),
     );
   }
+}
+
+AlertDialog removeDialog(BuildContext context, KeysRepository keysRepository, String keyId) {
+  return AlertDialog(
+    title: const Text("Deletar chave"),
+    backgroundColor: Colors.white,
+    surfaceTintColor: Colors.white,
+    content: const Text("Tem certeza que deseja remover está chave?"),
+    actions: [
+      TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            "Cancelar",
+            style: TextStyle(color: Colors.grey.shade600),
+          )),
+      TextButton(
+          onPressed: () {
+            keysRepository.delete(keyId).then((_) => Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => const HomeScreen())));
+          },
+          child: Text(
+            "Remover!",
+            style: TextStyle(color: Colors.red.shade400),
+          ))
+    ],
+  );
 }

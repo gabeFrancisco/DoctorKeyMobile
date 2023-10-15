@@ -56,4 +56,14 @@ class KeysRepository extends ChangeNotifier {
       return false;
     }
   }
+
+  Future<bool> delete(String id) async {
+    var response = await http.delete(Uri.parse('$_url/keys/$id'), headers: await getHeaders());
+    if (response.statusCode == 200) {
+      notifyListeners();
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
