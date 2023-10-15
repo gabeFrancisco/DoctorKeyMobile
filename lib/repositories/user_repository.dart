@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import '../models/User.dart';
 
 class UserRepository extends ChangeNotifier {
-  final String _apiUrl = ApiUrls.list[0];
+  final String _apiUrl = ApiUrls.list[1];
   late User user;
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
   bool isLoading = false;

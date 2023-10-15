@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:doctorkey/repositories/keys_repository.dart';
 import 'package:doctorkey/views/init_view.dart';
 import 'package:doctorkey/views/new_key_screen.dart';
+import 'package:doctorkey/widgets/delegates/CustomSearchDelegate.dart';
 import 'package:doctorkey/widgets/key_list.dart';
 import 'package:doctorkey/widgets/numbered_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:provider/provider.dart';
 import '../models/User.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -39,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Text("Ocorreu um erro ao carregar os dados!"),
                 );
               } else {
-                storage.read(key: 'token_exp').then((value) => print(value));
                 User user = User.fromJson(json.decode(snapshot.data));
                 return buildScaffold(context, user, storage);
               }
@@ -49,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage storage) {
+  var keyList = Provider.of<KeysRepository>(context, listen: false).list;
   return Scaffold(
     appBar: AppBar(
       leading: Builder(builder: (BuildContext context) {
@@ -70,6 +73,15 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
         style: TextStyle(color: Colors.white, fontSize: 18),
       ),
       actions: [
+        IconButton(
+          onPressed: () =>
+              {showSearch(context: context, delegate: CustomSearchDelegate(keyList.toList()))},
+          icon: const Icon(
+            Icons.search,
+            size: 28,
+          ),
+          color: Colors.white,
+        ),
         IconButton(
           onPressed: () => {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const NewKeyScreen()))

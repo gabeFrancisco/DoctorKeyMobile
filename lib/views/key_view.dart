@@ -63,7 +63,15 @@ class KeyView extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(const Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 3,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3))
+                ]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +109,7 @@ class KeyView extends StatelessWidget {
                 Text(
                   "R\$${model.price.toStringAsFixed(2)}",
                   style: TextStyle(
-                      color: Colors.green.shade500, fontWeight: FontWeight.bold, fontSize: 24),
+                      color: Colors.green.shade500, fontWeight: FontWeight.bold, fontSize: 26),
                 ),
               ],
             ),
