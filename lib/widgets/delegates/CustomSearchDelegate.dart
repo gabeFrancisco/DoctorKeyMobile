@@ -10,6 +10,7 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   List<Widget> buildActions(BuildContext context) {
+    print(searchItems);
     return [
       IconButton(
           onPressed: () {

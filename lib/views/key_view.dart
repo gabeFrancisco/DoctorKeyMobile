@@ -1,5 +1,5 @@
 import 'package:doctorkey/repositories/keys_repository.dart';
-import 'package:doctorkey/views/home_view.dart';
+import 'package:doctorkey/views/key_list_view.dart';
 import 'package:doctorkey/views/update_key_view.dart';
 import 'package:doctorkey/widgets/key_view_info.dart';
 import 'package:flutter/material.dart';
@@ -138,7 +138,7 @@ AlertDialog removeDialog(BuildContext context, KeysRepository keysRepository, St
       TextButton(
           onPressed: () {
             keysRepository.delete(keyId).then((_) => Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const HomeScreen())));
+                context, MaterialPageRoute(builder: (context) => const KeyListView())));
           },
           child: Text(
             "Remover!",

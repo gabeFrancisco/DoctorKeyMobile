@@ -2,7 +2,7 @@ import 'package:doctorkey/constants/keyTypes.dart';
 import 'package:doctorkey/constants/manufactors.dart';
 import 'package:doctorkey/models/Key.dart';
 import 'package:doctorkey/repositories/keys_repository.dart';
-import 'package:doctorkey/views/home_view.dart';
+import 'package:doctorkey/views/key_list_view.dart';
 import 'package:doctorkey/widgets/bladeTypes_dropdown.dart';
 import 'package:doctorkey/widgets/keyTypes_dropdown.dart';
 import 'package:doctorkey/widgets/manufactor_dropdown.dart';
@@ -219,7 +219,7 @@ class _UpdateKeyViewState extends State<UpdateKeyView> {
                       .then((_) => {
                             keysRepository.getAll().then((value) => Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const HomeScreen())))
+                                MaterialPageRoute(builder: (context) => const KeyListView())))
                           })
                 },
             backgroundColor: Colors.green.shade300,

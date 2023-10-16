@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:doctorkey/models/BaseEntity.dart';
 
 class KeyModel extends BaseEntity {

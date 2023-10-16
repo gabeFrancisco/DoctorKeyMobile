@@ -1,7 +1,5 @@
-import 'package:doctorkey/models/User.dart';
 import 'package:doctorkey/repositories/user_repository.dart';
-import 'package:doctorkey/services/login_service.dart';
-import 'package:doctorkey/views/home_view.dart';
+import 'package:doctorkey/views/key_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -40,7 +38,7 @@ class _LoginScreenState extends State<InitScreen> {
           if (snapshot.data == null) {
             return buildScaffold(context);
           } else {
-            return const HomeScreen();
+            return const KeyListView();
           }
         });
   }
@@ -133,7 +131,7 @@ class _LoginScreenState extends State<InitScreen> {
                                             Navigator.pushReplacement(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) => const HomeScreen()))
+                                                    builder: (context) => const KeyListView()))
                                           }
                                         else
                                           {setLoading(false), setError(true)}
