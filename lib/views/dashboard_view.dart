@@ -20,9 +20,6 @@ class _DashboardViewState extends State<DashboardView> {
         foregroundColor: Colors.white,
       ),
       // drawer: const AppDrawer(),
-      bottomNavigationBar: const BottomNavigation(
-        selected: 0,
-      ),
       body: Center(
         child: GridView(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

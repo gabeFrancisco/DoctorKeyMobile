@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatelessWidget {
   final int selected;
-  const BottomNavigation({super.key, required this.selected});
+  final PageController pc;
+  const BottomNavigation({super.key, required this.selected, required this.pc});
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+        onTap: (page) =>
+            pc.animateToPage(page, duration: const Duration(milliseconds: 400), curve: Curves.ease),
         iconSize: 30,
         elevation: 5,
         type: BottomNavigationBarType.fixed,

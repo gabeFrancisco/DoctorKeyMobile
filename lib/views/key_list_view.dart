@@ -83,7 +83,6 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
       backgroundColor: Colors.green.shade400,
     ),
     body: const Center(child: KeyList()),
-    bottomNavigationBar: const BottomNavigation(selected: 1),
   );
   // drawer: AppDrawer());
 }
