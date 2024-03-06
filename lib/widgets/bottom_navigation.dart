@@ -11,6 +11,7 @@ class BottomNavigation extends StatelessWidget {
         onTap: (page) =>
             pc.animateToPage(page, duration: const Duration(milliseconds: 400), curve: Curves.ease),
         iconSize: 30,
+        selectedItemColor: Colors.green.shade300,
         elevation: 5,
         type: BottomNavigationBarType.fixed,
         currentIndex: selected,
@@ -24,6 +25,7 @@ class BottomNavigation extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.group), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.build), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
         ]);
   }
 }

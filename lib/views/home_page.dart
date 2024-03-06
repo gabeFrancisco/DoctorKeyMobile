@@ -1,5 +1,10 @@
+import 'package:doctorkey/views/checklists_view.dart';
+import 'package:doctorkey/views/config_view.dart';
+import 'package:doctorkey/views/customers_view.dart';
 import 'package:doctorkey/views/dashboard_view.dart';
 import 'package:doctorkey/views/key_list_view.dart';
+import 'package:doctorkey/views/service_order_view.dart';
+import 'package:doctorkey/views/services_view.dart';
 import 'package:doctorkey/widgets/bottom_navigation.dart';
 import 'package:doctorkey/widgets/key_list.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +39,15 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         controller: pc,
         onPageChanged: setActualPage,
-        children: [
+        children: const [
           DashboardView(),
           KeyListView(),
+          ServiceOrderView(),
+          ServiceOrderView(),
+          ChecklistsView(),
+          CustomersView(),
+          ServicesView(),
+          ConfigView()
         ],
       ),
       bottomNavigationBar: BottomNavigation(

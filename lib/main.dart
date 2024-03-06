@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<UserRepository>.value(value: UserRepository()),
