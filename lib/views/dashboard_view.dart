@@ -1,6 +1,8 @@
 import 'package:doctorkey/widgets/app_drawer.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/bottom_navigation.dart';
+
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
 
@@ -17,7 +19,10 @@ class _DashboardViewState extends State<DashboardView> {
         title: const Text("Painel"),
         foregroundColor: Colors.white,
       ),
-      drawer: const AppDrawer(),
+      // drawer: const AppDrawer(),
+      bottomNavigationBar: const BottomNavigation(
+        selected: 0,
+      ),
       body: Center(
         child: GridView(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
