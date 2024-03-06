@@ -56,6 +56,8 @@ Widget buildScaffold(BuildContext context, User user, FlutterSecureStorage stora
   return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
+        title: Text("Chaves"),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () =>

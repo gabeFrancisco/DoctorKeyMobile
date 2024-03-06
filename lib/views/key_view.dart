@@ -42,13 +42,7 @@ class KeyView extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 25),
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            decoration: BoxDecoration(
-                color: Colors.green.shade400,
-                border: Border.all(color: Colors.green.shade400, width: 1),
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(50), bottomRight: Radius.circular(35))),
           ),
           KeyViewInfo(label: "Tipo", data: model.keyType, icon: Icons.type_specimen),
           KeyViewInfo(
@@ -64,7 +58,7 @@ class KeyView extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.all(const Radius.circular(15)),
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
                 boxShadow: [
                   BoxShadow(
                       color: Colors.grey.withOpacity(0.3),
