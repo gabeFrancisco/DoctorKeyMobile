@@ -20,21 +20,99 @@ class _DashboardViewState extends State<DashboardView> {
       drawer: const AppDrawer(),
       body: Center(
         child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 5.0,
             mainAxisSpacing: 5.0,
           ),
           children: [
-            Card(
-              color: Colors.green.shade400,
-              child: Container(
-                  padding: EdgeInsets.all(20),
-                  child: const Text(
-                    "Chaves cadastradas: 3",
-                    style: TextStyle(color: Colors.white),
-                  )),
-            )
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: Card(
+                elevation: 7,
+                color: Colors.green.shade400,
+                child: Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Chaves cadastradas:",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          "7",
+                          style: TextStyle(color: Colors.white, fontSize: 45),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: Card(
+                elevation: 7,
+                color: Colors.blue.shade400,
+                child: Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Ordens de serviço:",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          "3",
+                          style: TextStyle(color: Colors.white, fontSize: 45),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: Card(
+                elevation: 7,
+                color: Colors.red.shade300,
+                child: Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Checklists Ativos:",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          "1",
+                          style: TextStyle(color: Colors.white, fontSize: 45),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(25),
+              child: Card(
+                elevation: 7,
+                color: Colors.yellow.shade600,
+                child: Container(
+                    padding: const EdgeInsets.all(25),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Clientes cadastrados:",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                          "8",
+                          style: TextStyle(color: Colors.white, fontSize: 45),
+                        ),
+                      ],
+                    )),
+              ),
+            ),
           ],
         ),
       ),

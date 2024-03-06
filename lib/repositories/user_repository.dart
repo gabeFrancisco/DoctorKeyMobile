@@ -24,6 +24,7 @@ class UserRepository extends ChangeNotifier {
     final response = await http.post(Uri.parse('$_apiUrl/users/login'),
         body: jsonEncode(<String, String>{'username': username, 'password': password}),
         headers: await getHeaders());
+    print(username);
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -33,7 +34,7 @@ class UserRepository extends ChangeNotifier {
       await _storage.write(key: "user", value: jsonEncode(user));
       await _storage.write(key: "user_token", value: data['token']);
       await _storage.write(key: "token_exp", value: data["expire"]);
-    }
+    } else {}
 
     return response.statusCode;
   }
